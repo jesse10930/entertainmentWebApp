@@ -45,3 +45,6 @@ projectJournal.txt
 
 # API Keys
 /config/default.json
+
+# Nonsense for testing
+/thisIsATest
