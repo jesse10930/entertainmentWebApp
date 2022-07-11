@@ -26,7 +26,7 @@ const UserSchema = mongoose.Schema({
   },
   series: {
     type: Array,
-    defaul: [],
+    default: [],
   },
 });
 
