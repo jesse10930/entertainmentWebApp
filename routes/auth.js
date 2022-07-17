@@ -1,3 +1,8 @@
+// import express for backend
+// declare router to make requests
+// import bcrypt in order to hash user's password on server
+// import jwt in order to give authorization to client after successful authentication
+// import config to allow multiple routes to access database
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
@@ -86,16 +91,31 @@ router.post(
 );
 
 // @route PUT api/auth/:id
-// @desc  Update user
-// @access Public
-router.put('/:id', (req, res) => {
-  res.send('Update user');
+// @desc  Add/Remove movie or series to bookmark list
+// @access Private
+router.put('/:id', async (req, res) => {
+  const movie = req.body.movie;
+  try {
+    // Get user from database by the token id and add movie to movies array
+    // Must do logic for case of Movie removal and Series add/remove
+    let user = await User.findByIdAndUpdate(
+      req.params.id,
+      { $push: { movies: movie } },
+      { new: true }
+    );
+
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @route DELETE api/auth/:id
 // @desc  Delete user
-// @access Public
+// @access Private
 router.delete('/:id', (req, res) => {
+  // Delete a user's profile from the database
   res.send('Delete user');
 });
 

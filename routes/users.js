@@ -1,7 +1,8 @@
 // import express for backend
 // declare router to make requests
-// declare bcrypt in order to hash user's password on server
-// declare jwt in order to give authorization to client after successful authentication
+// import bcrypt in order to hash user's password on server
+// import jwt in order to give authorization to client after successful authentication
+// import config to allow multiple routes to access database
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
