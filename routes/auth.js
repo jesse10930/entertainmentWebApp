@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../middleware/auth');
 
+// Import User model from database
 const User = require('../models/User');
 
 // @route   GET api/auth
@@ -93,7 +94,7 @@ router.post(
 // @route PUT api/auth/:id
 // @desc  Add/Remove movie or series to bookmark list
 // @access Private
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
   const movie = req.body.movie;
   try {
     // Get user from database by the token id and add movie to movies array
@@ -114,9 +115,16 @@ router.put('/:id', async (req, res) => {
 // @route DELETE api/auth/:id
 // @desc  Delete user
 // @access Private
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   // Delete a user's profile from the database
-  res.send('Delete user');
+  try {
+    await User.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'User Removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // export router so that other files are allowed to access it
