@@ -1,2 +1,64 @@
 // Reusable classes
 
+// Fonts
+.heading-l {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.5px;
+  color: $white;
+}
+
+.heading-m {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  color: $white; 
+}
+
+.heading-s {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  color: $white;
+}
+
+.heading-xs {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  color: $white;
+}
+
+.body-m {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  color: $white;
+}
+
+.body-s {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 16px;
+  color: $white;
+}
+
+// Buttons
+.btn {
+  width: 336px;
+  height: 48px;
+  background: $red;
+  border-radius: 6px;
+  color: $white;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 19px;
+
+  &:hover {
+    background: $white;
+    color: $bg-black;
+    cursor: pointer;
+  }
+}
