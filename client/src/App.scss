@@ -10,9 +10,32 @@
 body {
   background: $bg-black;
   font-family: 'Outfit', sans-serif;
+  color: $white;
 }
 
 button {
   border: none;
   outline: none;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+// Login Page
+#login-container {
+  #login-icon {
+    margin: auto;
+    width: 1px;
+    
+  }
+
+  #login-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
 }

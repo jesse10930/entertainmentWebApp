@@ -62,3 +62,42 @@
     cursor: pointer;
   }
 }
+
+// Inputs
+.login-input {
+  width: 336px;
+  height: 37px;
+  border-bottom: 1px solid $grey;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 19px;
+  background: $bg-black;
+  color: $white;
+  caret-color: $red;
+
+  &:focus {
+    border-bottom: 1px solid white;
+  }
+}
+
+.search-input {
+  width: 484px;
+  height: 47px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 30px;
+  background: $bg-black;
+  color: $white;
+  caret-color: $red;
+
+  &:focus {
+    border-bottom: 1px solid $grey;
+  }
+}

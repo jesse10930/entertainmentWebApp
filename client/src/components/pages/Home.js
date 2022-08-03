@@ -15,7 +15,6 @@ export const Home = () => {
       <h1>Home</h1>
       <p>movies: {movies}</p>
       <p>{series}</p>
-      <button className='btn'>Login to your account</button>
     </div>
   );
 };
