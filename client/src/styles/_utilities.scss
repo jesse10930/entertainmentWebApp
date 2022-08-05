@@ -78,6 +78,8 @@
   background: $bg-black;
   color: $white;
   caret-color: $red;
+  background-color: $v-dk-grey;
+  cursor: pointer;
 
   &:focus {
     border-bottom: 1px solid white;

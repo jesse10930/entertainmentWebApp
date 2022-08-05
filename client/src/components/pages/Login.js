@@ -11,28 +11,24 @@ const Login = () => {
           />
         </svg>
       </div>
-      <div id='login-info'>
-        <h1 id='login-title'>Login</h1>
-        <form id='login-form'>
-          <input
-            type='email'
-            className='login-input'
-            placeholder='Email address'
-          />
-          <input
-            type='password'
-            className='login-input'
-            placeholder='Password'
-          />
-          <input type='submit' />
-        </form>
-        <p id='no-account'>
+      <form id='login-info'>
+        <h1 id='login-title' className='heading-l'>
+          Login
+        </h1>
+        <input
+          type='email'
+          className='login-input'
+          placeholder='Email address'
+        />
+        <input type='password' className='login-input' placeholder='Password' />
+        <input type='submit' className='btn' value='Login to your account' />
+        <p id='no-account' className='body-m'>
           Don't have an account?{' '}
           <a href='?' id='sign-up-link'>
             Sign Up
           </a>
         </p>
-      </div>
+      </form>
     </div>
   );
 };
