@@ -23,33 +23,94 @@ input {
   outline: none;
 }
 
-// Login Page
-#login-container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+a {
+  color: $red;
+  text-decoration: none;
+}
 
-  #login-info {
-    width: 336px;
-    height: 309px;
-    padding: 32px;
+// // Login Page
+// #login-container {
+//   height: 100vh;
+//   width: 100vw;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   align-items: center;
+
+//   #login-info {
+//     width: 336px;
+//     height: 309px;
+//     padding: 32px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+//     align-items: center;
+//     border-radius: 20px;
+//     background-color: $v-dk-grey;
+//   }
+
+//   #login-title {
+//     align-self: flex-start;
+//   }
+
+//   a {
+//     color: $red;
+//     text-decoration: none;
+//   }
+// }
+
+// Register Page
+#register-container {
+  #register-info {
+    height: 354px;
+  }
+}
+
+// Navbar
+#navbar-container {
+  height: calc(100vh - 64px);
+  width: 96px;
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  border-radius: 20px;
+  background-color: $v-dk-grey;
+
+  #navbar-icon {
+    position: absolute;
+    top: 36px;
+    left: 32px;
+  }
+
+  #navbar-links {
+    position: absolute;
+    height: 200px;
+    width: 20px;
+    left: 38px;
+    top: 136px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 20px;
-    background-color: $v-dk-grey;
-  }
+    justify-content: space-between;
+    
 
-  #login-title {
-    align-self: flex-start;
-  }
+    svg {
+      path{
+        pointer-events: none;
+      }
+      &:hover {
+        cursor: pointer;
+        fill: $red;
+      }
+    }
+    }
 
-  a {
-    color: $red;
-    text-decoration: none;
+  #prof-pic {
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    left: 13px;
+    bottom: 32px;
+    background-image: url(images/prof-pic-resize.jpg);
   }
 }

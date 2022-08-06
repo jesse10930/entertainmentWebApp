@@ -64,7 +64,7 @@
 }
 
 // Inputs
-.login-input {
+.login-register-input {
   width: 336px;
   height: 37px;
   border-bottom: 1px solid $grey;
@@ -102,4 +102,43 @@
   &:focus {
     border-bottom: 1px solid $grey;
   }
+}
+
+// Login/Register Styles
+.log-reg-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.log-reg-info {
+  width: 336px;
+  height: 309px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  background-color: $v-dk-grey;
+}
+
+.log-reg-title {
+  align-self: flex-start;
+  margin-bottom: 15px;
+}
+
+.log-reg-btn {
+  margin-top: 15px;
+}
+
+// Navbar
+.navbar-link-not-active {
+  fill: #5a698f;
+}
+.navbar-link-active {
+  fill: $white;
 }
