@@ -8,15 +8,28 @@ import {
   // FILTER_CONTENT,
   // CLEAR_FILTER,
   SET_ACTIVE,
+  GET_DATA,
 } from '../types';
 
 const ContentState = (props) => {
   const initialState = {
     active: 'trending',
+    data: [],
   };
 
   const [state, dispatch] = useReducer(contentReducer, initialState);
 
+  // Get Data
+  const getData = () => {
+    const newData = require('../../data.json');
+
+    dispatch({
+      type: GET_DATA,
+      payload: newData,
+    });
+  };
+
+  // Set active category
   const setActive = (clickedIcon) => {
     let newActive;
 
@@ -33,6 +46,8 @@ const ContentState = (props) => {
       case 'bookmarks-icon':
         newActive = 'bookmarks';
         break;
+      default:
+        newActive = 'trending';
     }
 
     dispatch({
@@ -45,7 +60,9 @@ const ContentState = (props) => {
     <ContentContext.Provider
       value={{
         active: state.active,
+        data: state.data,
         setActive,
+        getData,
       }}
     >
       {props.children}

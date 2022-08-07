@@ -127,3 +127,25 @@ a {
     top: 10px;
   }
 }
+
+// Content container
+#content-container {
+  width: calc(100vw - 196px);
+  margin-left: 164px;
+  margin-top: 130px;
+  border: 1px solid green;
+}
+
+// Trending
+#trending-container {
+  height: 295px;
+  border: 1px solid white;
+
+  #trending-title {
+    border: 1px solid red;
+  }
+
+  #trending-list {
+    border: 1px, solid, blue;
+  }
+}

@@ -1,4 +1,4 @@
-import { SET_ACTIVE } from '../types';
+import { SET_ACTIVE, GET_DATA } from '../types';
 
 const contentReducer = (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ const contentReducer = (state, action) => {
       return {
         ...state,
         active: action.payload,
+      };
+    case GET_DATA:
+      return {
+        ...state,
+        data: action.payload,
       };
     default:
       return state;

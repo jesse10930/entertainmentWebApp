@@ -8,30 +8,28 @@ const Searchbar = () => {
 
   // Declare local state
   const [searchBarPlaceHolder, setSearchBarPlaceHolder] = useState(
-    active === 'trending' ? 'Search for Movies or TV Series' : 'Working?'
+    'Search for Movies or TV Series'
   );
 
   // Set search bar placeholder
-  // useEffect(() => {
-  //   switch (active) {
-  //     case 'trending':
-  //       searchBarPlaceHolder = setSearchBarPlaceHolder(
-  //         'Search for Movies or TV Series'
-  //       );
-  //       break;
-  //     case 'movies':
-  //       searchBarPlaceHolder = setSearchBarPlaceHolder('Search for Movies');
-  //       break;
-  //     case 'series':
-  //       searchBarPlaceHolder = setSearchBarPlaceHolder('Search for TV Series');
-  //       break;
-  //     case 'bookmarks':
-  //       searchBarPlaceHolder = setSearchBarPlaceHolder(
-  //         'Search for Bookmarked Shows'
-  //       );
-  //       break;
-  //   }
-  // });
+  useEffect(() => {
+    switch (active) {
+      case 'trending':
+        setSearchBarPlaceHolder('Search for Movies or TV Series');
+        break;
+      case 'movies':
+        setSearchBarPlaceHolder('Search for Movies');
+        break;
+      case 'series':
+        setSearchBarPlaceHolder('Search for TV Series');
+        break;
+      case 'bookmarks':
+        setSearchBarPlaceHolder('Search for Bookmarked Shows');
+        break;
+      default:
+        setSearchBarPlaceHolder('Search for Movies or TV Series');
+    }
+  }, [active]);
 
   return (
     <div id='searchbar-container'>
