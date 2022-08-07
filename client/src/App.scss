@@ -114,3 +114,16 @@ a {
     background-image: url(images/prof-pic-resize.jpg);
   }
 }
+
+#searchbar-container {
+  position: absolute;
+  top: 64px;
+  left: 164px;
+  width: calc(100vw - 164px);
+
+  #search-icon {
+    position: relative;
+    margin-right: 24px;
+    top: 10px;
+  }
+}

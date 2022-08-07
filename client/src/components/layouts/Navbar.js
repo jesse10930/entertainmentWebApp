@@ -1,25 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import ContentContext from '../../context/content/contentContext';
 
 const Navbar = () => {
-  // Declare local state
-  const [active, setActive] = useState('trending');
+  // Declare and Destructure context
+  const contentContext = useContext(ContentContext);
+  const { active, setActive } = contentContext;
 
   // Icon click function
   const onIconClick = (e) => {
-    switch (e.target.id) {
-      case 'trending-icon':
-        setActive('trending');
-        break;
-      case 'movies-icon':
-        setActive('movies');
-        break;
-      case 'series-icon':
-        setActive('series');
-        break;
-      case 'bookmarks-icon':
-        setActive('bookmarks');
-        break;
-    }
+    setActive(e.target.id);
   };
 
   return (

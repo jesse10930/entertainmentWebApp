@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 // import ContentContext from '../../context/content/contentContext';
 import Navbar from '../layouts/Navbar';
+import Searchbar from '../layouts/Searchbar';
 
 export const Home = () => {
   // const contentContext = useContext(ContentContext);
@@ -14,6 +15,7 @@ export const Home = () => {
   return (
     <div id='home-container'>
       <Navbar />
+      <Searchbar />
       {/* <h1>Home</h1>
       <p>movies: {movies}</p>
       <p>{series}</p> */}

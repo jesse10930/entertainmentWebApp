@@ -87,7 +87,7 @@
 }
 
 .search-input {
-  width: 484px;
+  width: 92%;
   height: 47px;
   padding-bottom: 20px;
   box-sizing: border-box;
@@ -98,13 +98,14 @@
   background: $bg-black;
   color: $white;
   caret-color: $red;
+  cursor: pointer;
 
   &:focus {
     border-bottom: 1px solid $grey;
   }
 }
 
-// Login/Register Styles
+// Login/Register
 .log-reg-container {
   height: 100vh;
   width: 100vw;

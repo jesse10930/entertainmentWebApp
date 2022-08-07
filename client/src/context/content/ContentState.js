@@ -1,27 +1,51 @@
 import React, { useReducer } from 'react';
-import uuid from 'uuid';
+// import uuid from 'uuid';
 import ContentContext from './contentContext';
 import contentReducer from './contentReducer';
 import {
-  UPDATE_BOOKMARKS,
-  SET_CURRENT,
-  FILTER_CONTENT,
-  CLEAR_FILTER,
+  // UPDATE_BOOKMARKS,
+  // SET_CURRENT,
+  // FILTER_CONTENT,
+  // CLEAR_FILTER,
+  SET_ACTIVE,
 } from '../types';
 
 const ContentState = (props) => {
   const initialState = {
-    movies: ['Star Wars'],
-    series: [],
+    active: 'trending',
   };
 
   const [state, dispatch] = useReducer(contentReducer, initialState);
 
+  const setActive = (clickedIcon) => {
+    let newActive;
+
+    switch (clickedIcon) {
+      case 'trending-icon':
+        newActive = 'trending';
+        break;
+      case 'movies-icon':
+        newActive = 'movies';
+        break;
+      case 'series-icon':
+        newActive = 'series';
+        break;
+      case 'bookmarks-icon':
+        newActive = 'bookmarks';
+        break;
+    }
+
+    dispatch({
+      type: SET_ACTIVE,
+      payload: newActive,
+    });
+  };
+
   return (
     <ContentContext.Provider
       value={{
-        movies: state.movies,
-        series: state.series,
+        active: state.active,
+        setActive,
       }}
     >
       {props.children}
