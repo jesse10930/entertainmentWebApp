@@ -12,13 +12,15 @@ const Trending = () => {
 
   return (
     <div id='trending-container'>
-      <h1 id='trending-title'>Trending</h1>
+      <h1 id='trending-title' className='heading-l'>
+        Trending
+      </h1>
       <div id='trending-list'>
         {trendingList.map((trendingMovie, i) => (
           <TrendingItem
             key={i}
             title={trendingMovie.title}
-            thumbnail={trendingMovie.trending}
+            thumbnail={trendingMovie.thumbnail}
             year={trendingMovie.year}
             category={trendingMovie.category}
             rating={trendingMovie.rating}

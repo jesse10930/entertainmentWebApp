@@ -3,10 +3,10 @@ import ContentContext from '../../context/content/contentContext';
 import Navbar from '../layouts/Navbar';
 import Searchbar from '../layouts/Searchbar';
 import Trending from '../layouts/Trending';
-import Recommended from '../layouts/Recommended';
-import Movies from '../layouts/Movies';
-import Series from '../layouts/Series';
-import Bookmarks from '../layouts/Bookmarks';
+// import Recommended from '../layouts/Recommended';
+// import Movies from '../layouts/Movies';
+// import Series from '../layouts/Series';
+// import Bookmarks from '../layouts/Bookmarks';
 
 export const Home = () => {
   // Declare and destructure context
