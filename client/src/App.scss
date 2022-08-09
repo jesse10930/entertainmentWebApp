@@ -143,5 +143,11 @@ a {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

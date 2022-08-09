@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import ContentContext from '../../context/content/contentContext';
 import TrendingItem from '../layouts/TrendingItem';
 

@@ -1,17 +1,12 @@
 import React from 'react';
-import image from '../../images/assets/thumbnails/beyond-earth/trending/small.jpg';
 
-const TrendingItem = ({ title, year, thumbnail, category, rating }) => {
-  // Define local path for images
-  let thumbnailPath = '../../images' + thumbnail.trending.small.substring(1);
-
-  let temp = '../../images/assets/thumbnails/beyond-earth/trending/small.jpg';
-
+const TrendingItem = ({ title, year, category, rating, thumbnail }) => {
   return (
     <div
       className='trending-image'
       style={{
-        backgroundImage: `url(${image})`,
+        background: `url(${thumbnail.trending.small})`,
+        // background: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${thumbnail.trending.small})`,
       }}
     >
       <div className='bookmark-circle'>
@@ -24,6 +19,7 @@ const TrendingItem = ({ title, year, thumbnail, category, rating }) => {
           />
         </svg>
       </div>
+      <div className='gradient-bg'></div>
       <div className='trending-info'>
         <div className='trending-info-top'>
           <p className='body-m'>{year}</p>
