@@ -12,7 +12,7 @@ const Trending = () => {
 
   return (
     <div id='trending-container'>
-      <h1 id='trending-title' className='heading-l'>
+      <h1 id='trending-title' className='section-title heading-l'>
         Trending
       </h1>
       <div id='trending-list'>

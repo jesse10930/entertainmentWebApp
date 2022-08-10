@@ -3,7 +3,7 @@ import ContentContext from '../../context/content/contentContext';
 import Navbar from '../layouts/Navbar';
 import Searchbar from '../layouts/Searchbar';
 import Trending from '../layouts/Trending';
-// import Recommended from '../layouts/Recommended';
+import Recommended from '../layouts/Recommended';
 // import Movies from '../layouts/Movies';
 // import Series from '../layouts/Series';
 // import Bookmarks from '../layouts/Bookmarks';
@@ -25,10 +25,10 @@ export const Home = () => {
       <Searchbar />
       <div id='content-container'>
         <Trending />
-        {/* <Recommended />
-        <Movies />
-        <Series />
-        <Bookmarks /> */}
+        <Recommended />
+        {/* <Movies /> */}
+        {/* <Series /> */}
+        {/* <Bookmarks /> */}
       </div>
     </div>
   );
