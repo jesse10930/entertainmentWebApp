@@ -5,25 +5,48 @@ import ContentContext from '../../context/content/contentContext';
 const Recommended = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data } = contentContext;
+  const { data, active } = contentContext;
 
   // Declare recommended list
   let recommendedList = data.filter((item) => item.isTrending === false);
 
+  // Declare movies list
+  let moviesList = data.filter((item) => item.category === 'Movie');
+
+  // Declare series list
+  let seriesList = data.filter((item) => item.category === 'TV Series');
+
+  // Declare title based on active state
+  let sectionTitle =
+    active === 'movies'
+      ? 'Movies'
+      : active === 'series'
+      ? 'TV Series'
+      : 'Recommended for you';
+
+  // Declare active content list
+  let activeList =
+    active === 'movies'
+      ? moviesList
+      : active === 'series'
+      ? seriesList
+      : recommendedList;
+
   return (
     <div id='recommended-container'>
       <h1 id='recommended-title' className='section-title heading-l'>
-        Recommended for you
+        {sectionTitle}
       </h1>
       <div id='recommended-list'>
-        {recommendedList.map((recommendedObj, i) => (
+        {activeList.map((item, i) => (
           <RecommendedItem
             key={i}
-            title={recommendedObj.title}
-            thumbnail={recommendedObj.thumbnail}
-            year={recommendedObj.year}
-            category={recommendedObj.category}
-            rating={recommendedObj.rating}
+            title={item.title}
+            thumbnail={item.thumbnail}
+            year={item.year}
+            category={item.category}
+            rating={item.rating}
+            bookmarked={item.isBookmarked}
           />
         ))}
       </div>

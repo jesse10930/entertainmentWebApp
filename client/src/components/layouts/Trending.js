@@ -5,30 +5,31 @@ import TrendingItem from '../layouts/TrendingItem';
 const Trending = () => {
   // declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data } = contentContext;
+  const { data, active } = contentContext;
 
   // Declare movies that are trending
   let trendingList = data.filter((item) => item.isTrending === true);
 
-  return (
+  return active === 'trending' ? (
     <div id='trending-container'>
       <h1 id='trending-title' className='section-title heading-l'>
         Trending
       </h1>
       <div id='trending-list'>
-        {trendingList.map((trendingMovie, i) => (
+        {trendingList.map((item, i) => (
           <TrendingItem
             key={i}
-            title={trendingMovie.title}
-            thumbnail={trendingMovie.thumbnail}
-            year={trendingMovie.year}
-            category={trendingMovie.category}
-            rating={trendingMovie.rating}
+            title={item.title}
+            thumbnail={item.thumbnail}
+            year={item.year}
+            category={item.category}
+            rating={item.rating}
+            bookmarked={item.isBookmarked}
           />
         ))}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Trending;
