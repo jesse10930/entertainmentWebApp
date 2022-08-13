@@ -209,6 +209,14 @@
   position: absolute;
   top: 16px;
   right: 24px;
+
+  &:hover {
+    background-color: $white;
+
+    path {
+      stroke: $grey;
+    }
+  }
 }
 
 // Section title

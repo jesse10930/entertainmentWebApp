@@ -5,10 +5,15 @@ import TrendingItem from '../layouts/TrendingItem';
 const Trending = () => {
   // declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data, active } = contentContext;
+  const { data, active, setBookmark } = contentContext;
 
   // Declare movies that are trending
   let trendingList = data.filter((item) => item.isTrending === true);
+
+  // Handle bookmark click
+  const handleBookmarkClick = (clickedTitle) => {
+    setBookmark(clickedTitle);
+  };
 
   return active === 'trending' ? (
     <div id='trending-container'>
@@ -25,6 +30,7 @@ const Trending = () => {
             category={item.category}
             rating={item.rating}
             bookmarked={item.isBookmarked}
+            handleBookmarkClick={handleBookmarkClick}
           />
         ))}
       </div>

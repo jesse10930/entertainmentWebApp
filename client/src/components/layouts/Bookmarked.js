@@ -5,7 +5,7 @@ import ContentContext from '../../context/content/contentContext';
 const Recommended = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data } = contentContext;
+  const { data, setBookmark } = contentContext;
 
   // Declare bookmarked movies list
   let bookmarkedMoviesList = data.filter(
@@ -16,6 +16,11 @@ const Recommended = () => {
   let bookmarkedSeriesList = data.filter(
     (item) => item.isBookmarked === true && item.category === 'TV Series'
   );
+
+  // Handle bookmark click
+  const handleBookmarkClick = (clickedTitle) => {
+    setBookmark(clickedTitle);
+  };
 
   return (
     <Fragment>
@@ -33,6 +38,7 @@ const Recommended = () => {
               category={item.category}
               rating={item.rating}
               bookmarked={item.isBookmarked}
+              handleBookmarkClick={handleBookmarkClick}
             />
           ))}
         </div>
@@ -51,6 +57,7 @@ const Recommended = () => {
               category={item.category}
               rating={item.rating}
               bookmarked={item.isBookmarked}
+              handleBookmarkClick={handleBookmarkClick}
             />
           ))}
         </div>

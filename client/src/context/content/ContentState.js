@@ -9,6 +9,7 @@ import {
   // CLEAR_FILTER,
   SET_ACTIVE,
   GET_DATA,
+  SET_BOOKMARK,
 } from '../types';
 
 const ContentState = (props) => {
@@ -56,6 +57,30 @@ const ContentState = (props) => {
     });
   };
 
+  // Set bookmarked status
+  const setBookmark = (clickedTitle) => {
+    // Copy data
+    let newData = state.data;
+
+    // Find clicked title and store index
+    let oldContentIndex = newData.findIndex(
+      (content) => content.title === clickedTitle
+    );
+    let oldContent = newData[oldContentIndex];
+
+    // Set new content object
+    oldContent.isBookmarked = !oldContent.isBookmarked;
+    let newContent = oldContent;
+
+    // Update data
+    newData[oldContentIndex] = newContent;
+
+    dispatch({
+      type: SET_BOOKMARK,
+      payload: newData,
+    });
+  };
+
   return (
     <ContentContext.Provider
       value={{
@@ -63,6 +88,7 @@ const ContentState = (props) => {
         data: state.data,
         setActive,
         getData,
+        setBookmark,
       }}
     >
       {props.children}

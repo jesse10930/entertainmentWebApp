@@ -7,6 +7,7 @@ const RecommendedItem = ({
   rating,
   thumbnail,
   bookmarked,
+  handleBookmarkClick,
 }) => {
   // Declare local state
   const [isHovering, setIsHovering] = useState(false);
@@ -21,6 +22,11 @@ const RecommendedItem = ({
     setIsHovering(false);
   };
 
+  // bookmark click
+  const getTitle = () => {
+    handleBookmarkClick(title);
+  };
+
   return (
     <div className='recommended-item'>
       <div
@@ -33,7 +39,7 @@ const RecommendedItem = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className='bookmark-circle'>
+        <button className='bookmark-circle' onClick={getTitle}>
           {bookmarked ? (
             <svg width='12' height='14' xmlns='http://www.w3.org/2000/svg'>
               <path
@@ -51,7 +57,7 @@ const RecommendedItem = ({
               />
             </svg>
           )}
-        </div>
+        </button>
         <div
           className='play-oval'
           style={{ display: isHovering ? 'flex' : 'none' }}

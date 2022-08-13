@@ -7,18 +7,24 @@ const TrendingItem = ({
   rating,
   thumbnail,
   bookmarked,
+  handleBookmarkClick,
 }) => {
   // Declare local state
   const [isHovering, setIsHovering] = useState(false);
 
   // Add overlay on hover
   const handleMouseEnter = () => {
-    setIsHovering(true);
+    setIsHovering(!isHovering);
   };
 
   // Remove overlay on not hover
   const handleMouseLeave = () => {
-    setIsHovering(false);
+    setIsHovering(!isHovering);
+  };
+
+  // bookmark click
+  const getTitle = () => {
+    handleBookmarkClick(title);
   };
 
   return (
@@ -44,7 +50,12 @@ const TrendingItem = ({
         </svg>
         <p className='heading-xs play-title'>Play</p>
       </div>
-      <div className='bookmark-circle'>
+      <button
+        className='bookmark-circle'
+        onClick={getTitle}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {bookmarked ? (
           <svg width='12' height='14' xmlns='http://www.w3.org/2000/svg'>
             <path
@@ -62,7 +73,7 @@ const TrendingItem = ({
             />
           </svg>
         )}
-      </div>
+      </button>
       <div className='gradient-bg'></div>
       <div className='trending-info'>
         <div className='trending-info-top'>

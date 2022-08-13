@@ -5,7 +5,7 @@ import ContentContext from '../../context/content/contentContext';
 const Recommended = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data, active } = contentContext;
+  const { data, active, setBookmark } = contentContext;
 
   // Declare recommended list
   let recommendedList = data.filter((item) => item.isTrending === false);
@@ -32,6 +32,11 @@ const Recommended = () => {
       ? seriesList
       : recommendedList;
 
+  // Handle bookmark click
+  const handleBookmarkClick = (clickedTitle) => {
+    setBookmark(clickedTitle);
+  };
+
   return (
     <div id='recommended-container'>
       <h1 id='recommended-title' className='section-title heading-l'>
@@ -47,6 +52,7 @@ const Recommended = () => {
             category={item.category}
             rating={item.rating}
             bookmarked={item.isBookmarked}
+            handleBookmarkClick={handleBookmarkClick}
           />
         ))}
       </div>

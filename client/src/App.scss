@@ -16,6 +16,10 @@ body {
 button {
   border: none;
   outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 input {
