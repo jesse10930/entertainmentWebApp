@@ -4,7 +4,7 @@ import ContentContext from '../../context/content/contentContext';
 const Searchbar = () => {
   // Declare and Destructure context
   const contentContext = useContext(ContentContext);
-  const { active, setActive } = contentContext;
+  const { active, searchField, setSearchField } = contentContext;
 
   // Declare local state
   const [searchBarPlaceHolder, setSearchBarPlaceHolder] = useState(
@@ -31,6 +31,10 @@ const Searchbar = () => {
     }
   }, [active]);
 
+  const onChange = (e) => {
+    setSearchField(e.target.value);
+  };
+
   return (
     <div id='searchbar-container'>
       <svg
@@ -48,6 +52,8 @@ const Searchbar = () => {
         type='text'
         className='search-input'
         placeholder={searchBarPlaceHolder}
+        value={searchField}
+        onChange={onChange}
       />
     </div>
   );

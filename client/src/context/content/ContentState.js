@@ -10,12 +10,14 @@ import {
   SET_ACTIVE,
   GET_DATA,
   SET_BOOKMARK,
+  SET_SEARCH_FIELD,
 } from '../types';
 
 const ContentState = (props) => {
   const initialState = {
     active: 'trending',
     data: [],
+    searchField: '',
   };
 
   const [state, dispatch] = useReducer(contentReducer, initialState);
@@ -81,14 +83,26 @@ const ContentState = (props) => {
     });
   };
 
+  // Set search field
+  const setSearchField = (input) => {
+    let newSearchField = input;
+
+    dispatch({
+      type: SET_SEARCH_FIELD,
+      payload: newSearchField,
+    });
+  };
+
   return (
     <ContentContext.Provider
       value={{
         active: state.active,
         data: state.data,
+        searchField: state.searchField,
         setActive,
         getData,
         setBookmark,
+        setSearchField,
       }}
     >
       {props.children}

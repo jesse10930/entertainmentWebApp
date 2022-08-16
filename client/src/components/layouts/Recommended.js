@@ -5,16 +5,31 @@ import ContentContext from '../../context/content/contentContext';
 const Recommended = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data, active, setBookmark } = contentContext;
+  const { data, active, setBookmark, searchField } = contentContext;
 
   // Declare recommended list
-  let recommendedList = data.filter((item) => item.isTrending === false);
+  let recommendedList = data.filter((item) => {
+    return (
+      item.isTrending === false &&
+      item.title.toLowerCase().includes(searchField.toLowerCase())
+    );
+  });
 
   // Declare movies list
-  let moviesList = data.filter((item) => item.category === 'Movie');
+  let moviesList = data.filter((item) => {
+    return (
+      item.category === 'Movie' &&
+      item.title.toLowerCase().includes(searchField.toLowerCase())
+    );
+  });
 
   // Declare series list
-  let seriesList = data.filter((item) => item.category === 'TV Series');
+  let seriesList = data.filter((item) => {
+    return (
+      item.category === 'TV Series' &&
+      item.title.toLowerCase().includes(searchField.toLowerCase())
+    );
+  });
 
   // Declare title based on active state
   let sectionTitle =
@@ -40,7 +55,9 @@ const Recommended = () => {
   return (
     <div id='recommended-container'>
       <h1 id='recommended-title' className='section-title heading-l'>
-        {sectionTitle}
+        {searchField === ''
+          ? sectionTitle
+          : `Found ${activeList.length} results for '${searchField}'`}
       </h1>
       <div id='recommended-list'>
         {activeList.map((item, i) => (

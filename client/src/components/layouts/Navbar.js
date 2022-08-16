@@ -4,11 +4,12 @@ import ContentContext from '../../context/content/contentContext';
 const Navbar = () => {
   // Declare and Destructure context
   const contentContext = useContext(ContentContext);
-  const { active, setActive } = contentContext;
+  const { active, setActive, setSearchField } = contentContext;
 
   // Icon click function
   const onIconClick = (e) => {
     setActive(e.target.id);
+    setSearchField('');
   };
 
   return (
@@ -83,7 +84,6 @@ const Navbar = () => {
         </svg>
       </div>
       <a
-        // style={{ display: 'table-cell' }}
         href='https://www.codebyronda.com/'
         target='_blank'
         rel='noreferrer'

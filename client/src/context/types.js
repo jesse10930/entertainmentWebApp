@@ -5,3 +5,4 @@
 export const SET_ACTIVE = 'SET_ACTIVE';
 export const GET_DATA = 'GET_DATA';
 export const SET_BOOKMARK = 'SET_BOOKMARK';
+export const SET_SEARCH_FIELD = 'SET_SEARCH_FIELD';

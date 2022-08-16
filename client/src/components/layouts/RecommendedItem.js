@@ -70,11 +70,6 @@ const RecommendedItem = ({
           </svg>
           <p className='heading-xs play-title'>Play</p>
         </div>
-        {/* <img
-          src={thumbnail.regular.small}
-          alt='recommended image'
-          className='recommended-image'
-        /> */}
       </div>
       <div className='recommended-info'>
         <div className='recommended-top'>

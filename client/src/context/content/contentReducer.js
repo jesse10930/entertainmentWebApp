@@ -1,4 +1,4 @@
-import { SET_ACTIVE, GET_DATA, SET_BOOKMARK } from '../types';
+import { SET_ACTIVE, GET_DATA, SET_BOOKMARK, SET_SEARCH_FIELD } from '../types';
 
 const contentReducer = (state, action) => {
   switch (action.type) {
@@ -16,6 +16,11 @@ const contentReducer = (state, action) => {
       return {
         ...state,
         data: action.payload,
+      };
+    case SET_SEARCH_FIELD:
+      return {
+        ...state,
+        searchField: action.payload,
       };
     default:
       return state;

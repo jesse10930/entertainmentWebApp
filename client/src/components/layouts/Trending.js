@@ -5,7 +5,7 @@ import TrendingItem from '../layouts/TrendingItem';
 const Trending = () => {
   // declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data, active, setBookmark } = contentContext;
+  const { data, active, setBookmark, searchField } = contentContext;
 
   // Declare movies that are trending
   let trendingList = data.filter((item) => item.isTrending === true);
@@ -15,7 +15,7 @@ const Trending = () => {
     setBookmark(clickedTitle);
   };
 
-  return active === 'trending' ? (
+  return active === 'trending' && searchField === '' ? (
     <div id='trending-container'>
       <h1 id='trending-title' className='section-title heading-l'>
         Trending

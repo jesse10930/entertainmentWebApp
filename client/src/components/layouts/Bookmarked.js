@@ -5,16 +5,22 @@ import ContentContext from '../../context/content/contentContext';
 const Recommended = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
-  const { data, setBookmark } = contentContext;
+  const { data, setBookmark, searchField } = contentContext;
 
   // Declare bookmarked movies list
   let bookmarkedMoviesList = data.filter(
-    (item) => item.isBookmarked === true && item.category === 'Movie'
+    (item) =>
+      item.isBookmarked === true &&
+      item.category === 'Movie' &&
+      item.title.toLowerCase().includes(searchField.toLowerCase())
   );
 
   // Delcare bookmared Series List
   let bookmarkedSeriesList = data.filter(
-    (item) => item.isBookmarked === true && item.category === 'TV Series'
+    (item) =>
+      item.isBookmarked === true &&
+      item.category === 'TV Series' &&
+      item.title.toLowerCase().includes(searchField.toLowerCase())
   );
 
   // Handle bookmark click
@@ -26,7 +32,9 @@ const Recommended = () => {
     <Fragment>
       <div id='recommended-container'>
         <h1 id='recommended-title' className='section-title heading-l'>
-          Bookmarked Movies
+          {searchField === ''
+            ? 'Bookmarked Movies'
+            : `Found ${bookmarkedMoviesList.length} Bookmarked Movies for '${searchField}'`}
         </h1>
         <div id='recommended-list'>
           {bookmarkedMoviesList.map((item, i) => (
@@ -45,7 +53,9 @@ const Recommended = () => {
       </div>
       <div id='recommended-container'>
         <h1 id='recommended-title' className='section-title heading-l'>
-          Bookmarked TV Series{' '}
+          {searchField === ''
+            ? 'Bookmarked TV Series'
+            : `Found ${bookmarkedSeriesList.length} Bookmarked TV Series for '${searchField}'`}{' '}
         </h1>
         <div id='recommended-list'>
           {bookmarkedSeriesList.map((item, i) => (
