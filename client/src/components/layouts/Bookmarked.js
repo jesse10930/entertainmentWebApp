@@ -1,8 +1,8 @@
 import React, { useContext, Fragment } from 'react';
-import RecommendedItem from './RecommendedItem';
+import ContentItem from '../cards/ContentItem';
 import ContentContext from '../../context/content/contentContext';
 
-const Recommended = () => {
+const Content = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
   const { data, setBookmark, searchField } = contentContext;
@@ -38,7 +38,7 @@ const Recommended = () => {
         </h1>
         <div id='recommended-list'>
           {bookmarkedMoviesList.map((item, i) => (
-            <RecommendedItem
+            <ContentItem
               key={i}
               title={item.title}
               thumbnail={item.thumbnail}
@@ -59,7 +59,7 @@ const Recommended = () => {
         </h1>
         <div id='recommended-list'>
           {bookmarkedSeriesList.map((item, i) => (
-            <RecommendedItem
+            <ContentItem
               key={i}
               title={item.title}
               thumbnail={item.thumbnail}
@@ -76,4 +76,4 @@ const Recommended = () => {
   );
 };
 
-export default Recommended;
+export default Content;

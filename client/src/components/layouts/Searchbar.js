@@ -13,22 +13,15 @@ const Searchbar = () => {
 
   // Set search bar placeholder
   useEffect(() => {
-    switch (active) {
-      case 'trending':
-        setSearchBarPlaceHolder('Search for Movies or TV Series');
-        break;
-      case 'movies':
-        setSearchBarPlaceHolder('Search for Movies');
-        break;
-      case 'series':
-        setSearchBarPlaceHolder('Search for TV Series');
-        break;
-      case 'bookmarks':
-        setSearchBarPlaceHolder('Search for Bookmarked Shows');
-        break;
-      default:
-        setSearchBarPlaceHolder('Search for Movies or TV Series');
-    }
+    active === 'trending'
+      ? setSearchBarPlaceHolder('Search for Movies or TV Series')
+      : active === 'movies'
+      ? setSearchBarPlaceHolder('Search for Movies')
+      : active === 'series'
+      ? setSearchBarPlaceHolder('Search for TV Series')
+      : active === 'bookmarks'
+      ? setSearchBarPlaceHolder('Search for Bookmarked Shows')
+      : setSearchBarPlaceHolder('Search for Movies or TV Series');
   }, [active]);
 
   const onChange = (e) => {

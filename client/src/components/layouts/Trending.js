@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import ContentContext from '../../context/content/contentContext';
-import TrendingItem from '../layouts/TrendingItem';
+import TrendingItem from '../cards/TrendingItem';
 
 const Trending = () => {
-  // declare and destructure global state
+  // Declare and destructure global state
   const contentContext = useContext(ContentContext);
   const { data, active, setBookmark, searchField } = contentContext;
 

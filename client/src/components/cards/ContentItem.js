@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RecommendedItem = ({
+const ContentItem = ({
   title,
   year,
   category,
@@ -102,4 +102,4 @@ const RecommendedItem = ({
   );
 };
 
-export default RecommendedItem;
+export default ContentItem;

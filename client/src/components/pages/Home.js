@@ -3,7 +3,7 @@ import ContentContext from '../../context/content/contentContext';
 import Navbar from '../layouts/Navbar';
 import Searchbar from '../layouts/Searchbar';
 import Trending from '../layouts/Trending';
-import Recommended from '../layouts/Recommended';
+import Content from '../layouts/Content';
 import Bookmarked from '../layouts/Bookmarked';
 
 export const Home = () => {
@@ -23,7 +23,7 @@ export const Home = () => {
       <Searchbar />
       <div id='content-container'>
         <Trending />
-        {active !== 'bookmarks' ? <Recommended /> : <Bookmarked />}
+        {active !== 'bookmarks' ? <Content /> : <Bookmarked />}
       </div>
     </div>
   );

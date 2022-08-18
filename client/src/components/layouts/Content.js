@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import RecommendedItem from './RecommendedItem';
+import ContentItem from '../cards/ContentItem';
 import ContentContext from '../../context/content/contentContext';
 
 const Recommended = () => {
@@ -61,7 +61,7 @@ const Recommended = () => {
       </h1>
       <div id='recommended-list'>
         {activeList.map((item, i) => (
-          <RecommendedItem
+          <ContentItem
             key={i}
             title={item.title}
             thumbnail={item.thumbnail}
