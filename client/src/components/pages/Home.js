@@ -4,12 +4,11 @@ import Navbar from '../layouts/Navbar';
 import Searchbar from '../layouts/Searchbar';
 import Trending from '../layouts/Trending';
 import Content from '../layouts/Content';
-import Bookmarked from '../layouts/Bookmarked';
 
 export const Home = () => {
   // Declare and destructure context
   const contentContext = useContext(ContentContext);
-  const { active, getData } = contentContext;
+  const { getData } = contentContext;
 
   // Effect to get data on initial load
   useEffect(() => {
@@ -23,7 +22,7 @@ export const Home = () => {
       <Searchbar />
       <div id='content-container'>
         <Trending />
-        {active !== 'bookmarks' ? <Content /> : <Bookmarked />}
+        <Content />
       </div>
     </div>
   );

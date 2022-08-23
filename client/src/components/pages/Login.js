@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+  // delcare local state
+  const [alert, setAlert] = useState([]);
+
   return (
     <div id='login-container' className='log-reg-container'>
       <div id='login-icon'>
@@ -20,11 +23,13 @@ const Login = () => {
           type='email'
           className='login-register-input'
           placeholder='Email address'
+          id='login-email'
         />
         <input
           type='password'
           className='login-register-input'
           placeholder='Password'
+          id='login-password'
         />
         <input
           type='submit'
