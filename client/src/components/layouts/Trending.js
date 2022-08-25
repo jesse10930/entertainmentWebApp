@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ContentContext from '../../context/content/contentContext';
 import TrendingItem from '../cards/TrendingItem';
 
@@ -7,8 +7,15 @@ const Trending = () => {
   const contentContext = useContext(ContentContext);
   const { data, active, setBookmark, searchField } = contentContext;
 
-  // Declare movies that are trending
-  let trendingList = data.filter((item) => item.isTrending === true);
+  // Declare local state
+  const [trendingList, setTrendingList] = useState(
+    data.filter((item) => item.isTrending === true)
+  );
+
+  // Set local state on page load
+  useEffect(() => {
+    setTrendingList(data.filter((item) => item.isTrending === true));
+  }, [data]);
 
   // Handle bookmark click
   const handleBookmarkClick = (clickedTitle) => {
