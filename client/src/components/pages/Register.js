@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
-import AlertContext from '../../context/alert/alertContext';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
   // Declare and destructure alert state
-  const alertContext = useContext(AlertContext);
-  const { activeAlert, setAlert } = alertContext;
+  // const alertContext = useContext(AlertContext);
+  // const { activeAlert, setAlert } = alertContext;
 
-  // Register submit function
-  const onRegisterSubmit = () => {
-    setAlert();
-  };
+  // // Register submit function
+  // const onRegisterSubmit = () => {
+  //   setAlert();
+  // };
 
   return (
     <div id='register-container' className='log-reg-container'>
@@ -45,7 +44,7 @@ const Register = () => {
           type='submit'
           className='btn log-reg-btn'
           value='Create an account'
-          onSubmit={onRegisterSubmit}
+          // onSubmit={onRegisterSubmit}
         />
         <p id='has-account' className='body-m'>
           Already have an account? <Link to='/login'>Login</Link>
