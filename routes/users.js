@@ -19,7 +19,6 @@ router.post(
   '/',
   // Express validator checks that all fields filled out properly
   [
-    check('name', 'Please include a name').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check(
       'password',
@@ -27,14 +26,14 @@ router.post(
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {
-    // check if validation resutls errors array is empty
+    // check if validation results errors array is empty
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
     // Destructure body, declare movies and series array
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
     const movies = [];
     const series = [];
 
@@ -48,7 +47,6 @@ router.post(
 
       // Declare new user object
       user = new User({
-        name,
         email,
         password,
         movies,
@@ -83,7 +81,7 @@ router.post(
         }
       );
     } catch (err) {
-      console.error(error.message);
+      console.error(err.message);
       res.status(500).send('Server Error');
     }
   }

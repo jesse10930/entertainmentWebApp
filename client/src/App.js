@@ -7,7 +7,14 @@ import Register from './components/pages/Register';
 import ContentState from './context/content/ContentState';
 import AuthState from './context/auth/AuthState';
 
+import setAuthToken from './utils/setAuthToken';
+
 import './App.scss';
+
+// set global header for user if token exists
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   return (
