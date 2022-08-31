@@ -55,14 +55,14 @@ router.post(
 
       // Return error if not found
       if (!user) {
-        return res.status(400).json({ msg: 'Invalid Credentials' });
+        return res.status(400).json({ msg: 'Email not found' });
       }
 
       // Check entered password matches hashed password in db, return error if not
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        res.status(400).json({ msg: 'Invalid Credentials ' });
+        res.status(400).json({ msg: 'Password incorrect for entered email' });
       }
 
       // declare payload from db id

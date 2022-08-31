@@ -77,6 +77,27 @@ a {
     }
     }
 
+  #logout-btn {
+    position: absolute;
+    height: 20px;
+    width: 70px;
+    left: 13px;
+    bottom: 122px;
+    background: $red;
+    border-radius: 6px;
+    color: $white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 19px;
+  
+    &:hover {
+      background: $white;
+      color: $bg-black;
+      cursor: pointer;
+    }
+  }
+
   #prof-pic {
     position: absolute;
     height: 70px;

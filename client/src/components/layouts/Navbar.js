@@ -1,15 +1,24 @@
 import React, { useContext } from 'react';
 import ContentContext from '../../context/content/contentContext';
+import AuthContext from '../../context/auth/authContext';
 
 const Navbar = () => {
-  // Declare and Destructure context
+  // Declare and Destructure global state
   const contentContext = useContext(ContentContext);
+  const authContext = useContext(AuthContext);
+
   const { active, setActive, setSearchField } = contentContext;
+  const { logout } = authContext;
 
   // Icon click function
   const onIconClick = (e) => {
     setActive(e.target.id);
     setSearchField('');
+  };
+
+  // Logout click function
+  const onLogoutClick = () => {
+    logout();
   };
 
   return (
@@ -83,6 +92,9 @@ const Navbar = () => {
           <path d='M15.387 0c.202 0 .396.04.581.119.291.115.522.295.694.542.172.247.258.52.258.82v17.038c0 .3-.086.573-.258.82a1.49 1.49 0 0 1-.694.542 1.49 1.49 0 0 1-.581.106c-.423 0-.79-.141-1.098-.423L8.46 13.959l-5.83 5.605c-.317.29-.682.436-1.097.436-.202 0-.396-.04-.581-.119a1.49 1.49 0 0 1-.694-.542A1.402 1.402 0 0 1 0 18.52V1.481c0-.3.086-.573.258-.82A1.49 1.49 0 0 1 .952.119C1.137.039 1.33 0 1.533 0h13.854Z' />
         </svg>
       </div>
+      <button id='logout-btn' className='logout' onClick={onLogoutClick}>
+        LOGOUT
+      </button>
       <a
         href='https://www.codebyronda.com/'
         target='_blank'

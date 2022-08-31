@@ -13,7 +13,6 @@ const Register = () => {
     password: '',
     password2: '',
   });
-
   const { email, password, password2 } = user;
 
   // Declare navigation const

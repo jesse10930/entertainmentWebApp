@@ -1,9 +1,54 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 
 const Login = () => {
-  // delcare local state
-  const [alert, setAlert] = useState([]);
+  // Declare and destructure global state
+  const authContext = useContext(AuthContext);
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+
+  // Declare and destructure local state
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = user;
+
+  // Declare navigation const
+  const navigate = useNavigate();
+
+  // useEffect hook fro navigating authenticated user and checking errors
+  useEffect(() => {
+    console.log('isAuth');
+    if (isAuthenticated) {
+      console.log('called');
+      navigate('/', { replace: true });
+    }
+
+    if (
+      error === 'Email not found' ||
+      error === 'Password incorrect for entered email'
+    ) {
+      console.log(error);
+      clearErrors();
+    }
+  }, [error, isAuthenticated]);
+
+  // Called when user changes input
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  // Called on login submit
+  const onLoginSubmit = (e) => {
+    e.preventDefault();
+    if (email === '' || password === '') {
+      console.log('email or password is blank');
+      console.log(user);
+    } else {
+      login({ email, password });
+    }
+  };
 
   return (
     <div id='login-container' className='log-reg-container'>
@@ -15,21 +60,25 @@ const Login = () => {
           />
         </svg>
       </div>
-      <form id='login-info' className='log-reg-info'>
+      <form id='login-info' className='log-reg-info' onSubmit={onLoginSubmit}>
         <h1 id='login-title' className='heading-l log-reg-title'>
           Login
         </h1>
         <input
           type='email'
           className='login-register-input'
+          name='email'
           placeholder='Email address'
           id='login-email'
+          onChange={onInputChange}
         />
         <input
           type='password'
           className='login-register-input'
+          name='password'
           placeholder='Password'
           id='login-password'
+          onChange={onInputChange}
         />
         <input
           type='submit'

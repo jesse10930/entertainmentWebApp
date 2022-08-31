@@ -75,8 +75,39 @@ const AuthState = (props) => {
   };
 
   // Login User
+  const login = async (formData) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const res = await axios.post('/api/auth', formData, config);
+
+      // Why did this not work when it was in the authReducer???
+      localStorage.setItem('token', res.data.token);
+
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data,
+      });
+
+      loadUser();
+    } catch (err) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: err.response.data.msg,
+      });
+    }
+  };
 
   // Logout
+  const logout = () => {
+    dispatch({
+      type: LOGOUT,
+    });
+  };
 
   // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
@@ -92,6 +123,8 @@ const AuthState = (props) => {
         register,
         clearErrors,
         loadUser,
+        login,
+        logout,
       }}
     >
       {props.children}
