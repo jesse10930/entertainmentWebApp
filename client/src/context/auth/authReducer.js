@@ -7,6 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
+  UPDATE_BOOKMARKS,
 } from '../types';
 
 const authReducer = (state, action) => {
@@ -43,6 +44,11 @@ const authReducer = (state, action) => {
         ...state,
         isAuthenticated: true,
         loading: false,
+        user: action.payload,
+      };
+    case UPDATE_BOOKMARKS:
+      return {
+        ...state,
         user: action.payload,
       };
     default:

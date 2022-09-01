@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react';
-// import uuid from 'uuid';
 import ContentContext from './contentContext';
 import contentReducer from './contentReducer';
 import { SET_ACTIVE, GET_DATA, SET_BOOKMARK, SET_SEARCH_FIELD } from '../types';
@@ -16,6 +15,8 @@ const ContentState = (props) => {
   // Get Data
   const getData = () => {
     const newData = require('../../data.json');
+
+    newData.map((item) => (item.isBookmarked = false));
 
     dispatch({
       type: GET_DATA,

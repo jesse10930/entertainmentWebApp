@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+// import AuthContext from '../../context/auth/authContext';
 
 const ContentItem = ({
   title,
@@ -8,7 +9,12 @@ const ContentItem = ({
   thumbnail,
   bookmarked,
   handleBookmarkClick,
+  user,
 }) => {
+  // Declare and destructure global state
+  // const authContext = useContext(AuthContext);
+  // const { user } = authContext;
+
   // Declare local state
   const [isHovering, setIsHovering] = useState(false);
 
@@ -24,7 +30,7 @@ const ContentItem = ({
 
   // bookmark click
   const getTitle = () => {
-    handleBookmarkClick(title);
+    handleBookmarkClick(category, title);
   };
 
   return (

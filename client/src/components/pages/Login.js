@@ -19,9 +19,7 @@ const Login = () => {
 
   // useEffect hook fro navigating authenticated user and checking errors
   useEffect(() => {
-    console.log('isAuth');
     if (isAuthenticated) {
-      console.log('called');
       navigate('/', { replace: true });
     }
 

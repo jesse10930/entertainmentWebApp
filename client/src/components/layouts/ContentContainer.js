@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentItem from '../cards/ContentItem';
 
-const ContentContainer = ({ activeList, handleBookmarkClick }) => {
+const ContentContainer = ({ activeList, handleBookmarkClick, user }) => {
   return (
     <div id='recommended-list'>
       {activeList.map((item, i) => (
@@ -13,6 +13,7 @@ const ContentContainer = ({ activeList, handleBookmarkClick }) => {
           category={item.category}
           rating={item.rating}
           bookmarked={item.isBookmarked}
+          user={user}
           handleBookmarkClick={handleBookmarkClick}
         />
       ))}

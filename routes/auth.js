@@ -91,17 +91,18 @@ router.post(
   }
 );
 
-// @route PUT api/auth/:id
+// @route PUT api/auth/
 // @desc  Add/Remove movie or series to bookmark list
 // @access Private
-router.put('/:id', auth, async (req, res) => {
-  const movie = req.body.movie;
+router.put('/', auth, async (req, res) => {
+  let newUser = req.body;
+  let newUserMovies = req.body.movies;
+  let newUserSeries = req.body.series;
+
   try {
-    // Get user from database by the token id and add movie to movies array
-    // Must do logic for case of Movie removal and Series add/remove
-    let user = await User.findByIdAndUpdate(
-      req.params.id,
-      { $push: { movies: movie } },
+    let user = await User.findOneAndUpdate(
+      newUser.id,
+      { movies: newUserMovies, series: newUserSeries },
       { new: true }
     );
 
@@ -115,17 +116,17 @@ router.put('/:id', auth, async (req, res) => {
 // @route DELETE api/auth/:id
 // @desc  Delete user
 // @access Private
-router.delete('/:id', auth, async (req, res) => {
-  // Delete a user's profile from the database
-  try {
-    await User.findByIdAndRemove(req.params.id);
+// router.delete('/:id', auth, async (req, res) => {
+//   // Delete a user's profile from the database
+//   try {
+//     await User.findByIdAndRemove(req.params.id);
 
-    res.json({ msg: 'User Removed' });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  }
-});
+//     res.json({ msg: 'User Removed' });
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).send('Server Error');
+//   }
+// });
 
 // export router so that other files are allowed to access it
 module.exports = router;

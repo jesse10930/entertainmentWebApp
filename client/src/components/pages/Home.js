@@ -9,17 +9,28 @@ import AuthContext from '../../context/auth/authContext';
 export const Home = () => {
   // Declare and destructure context
   const contentContext = useContext(ContentContext);
-  const { getData } = contentContext;
+  const { getData, data } = contentContext;
 
   const authContext = useContext(AuthContext);
-  const { loadUser } = authContext;
+  const { loadUser, user } = authContext;
 
   // Effect to get data on initial load
   useEffect(() => {
-    getData();
     loadUser();
+    getData();
     // eslint-disable-next-line
   }, []);
+
+  // Effect to update bookmarks for user
+  useEffect(() => {
+    user &&
+      data.map(
+        (item) =>
+          (user.movies.includes(item.title) ||
+            user.series.includes(item.title)) &&
+          (item.isBookmarked = true)
+      );
+  }, [user, data]);
 
   return (
     <div id='home-container'>

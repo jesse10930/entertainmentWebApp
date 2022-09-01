@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react';
-// import uuid from 'uuid';
 import axios from 'axios';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
@@ -13,6 +12,7 @@ import {
   LOGOUT,
   CLEAR_ERRORS,
   REGISTER_SUCCESS,
+  UPDATE_BOOKMARKS,
 } from '../types';
 
 const AuthState = (props) => {
@@ -109,6 +109,39 @@ const AuthState = (props) => {
     });
   };
 
+  // Update user's bookmarks
+  const updateBookmarks = async (clickedCategory, clickedTitle) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    // Delcare category variable for clicked content
+    let newUser = state.user;
+    const category = clickedCategory === 'Movie' ? 'movies' : 'series';
+
+    if (newUser[category].includes(clickedTitle)) {
+      let index = newUser[category].indexOf(clickedTitle);
+      newUser[category].splice(index, 1);
+    } else {
+      newUser[category].push(clickedTitle);
+    }
+
+    try {
+      const res = await axios.put('/api/auth', newUser, config);
+
+      dispatch({
+        type: UPDATE_BOOKMARKS,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR,
+      });
+    }
+  };
+
   // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
@@ -125,6 +158,7 @@ const AuthState = (props) => {
         loadUser,
         login,
         logout,
+        updateBookmarks,
       }}
     >
       {props.children}

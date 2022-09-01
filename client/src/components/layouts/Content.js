@@ -1,11 +1,15 @@
 import React, { useContext, Fragment, useEffect, useState } from 'react';
 import ContentContainer from '../layouts/ContentContainer';
 import ContentContext from '../../context/content/contentContext';
+import AuthContext from '../../context/auth/authContext';
 
 const Content = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
   const { data, active, setBookmark, searchField } = contentContext;
+
+  const authContext = useContext(AuthContext);
+  const { updateBookmarks, user } = authContext;
 
   // Set initial state
   const [sectionTitle, setSectionTitle] = useState(['']);
@@ -80,8 +84,9 @@ const Content = () => {
   };
 
   // Handle bookmark click
-  const handleBookmarkClick = (clickedTitle) => {
+  const handleBookmarkClick = (clickedCategory, clickedTitle) => {
     setBookmark(clickedTitle);
+    updateBookmarks(clickedCategory, clickedTitle);
   };
 
   return (
@@ -98,6 +103,7 @@ const Content = () => {
             </h1>
             <ContentContainer
               activeList={activeList}
+              user={user}
               handleBookmarkClick={handleBookmarkClick}
             />
           </div>
