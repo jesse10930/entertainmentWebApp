@@ -17,7 +17,7 @@ const Login = () => {
   // Declare navigation const
   const navigate = useNavigate();
 
-  // useEffect hook fro navigating authenticated user and checking errors
+  // useEffect hook for navigating authenticated user and checking errors
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/', { replace: true });

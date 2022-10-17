@@ -1,11 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ContentContext from '../../context/content/contentContext';
 import TrendingItem from '../cards/TrendingItem';
+import AuthContext from '../../context/auth/authContext';
 
 const Trending = () => {
   // Declare and destructure global state
   const contentContext = useContext(ContentContext);
   const { data, active, setBookmark, searchField } = contentContext;
+
+  const authContext = useContext(AuthContext);
+  const { updateBookmarks } = authContext;
 
   // Declare local state
   const [trendingList, setTrendingList] = useState(
@@ -18,8 +22,9 @@ const Trending = () => {
   }, [data]);
 
   // Handle bookmark click
-  const handleBookmarkClick = (clickedTitle) => {
+  const handleBookmarkClick = (clickedCategory, clickedTitle) => {
     setBookmark(clickedTitle);
+    updateBookmarks(clickedCategory, clickedTitle);
   };
 
   return active === 'trending' && searchField === '' ? (

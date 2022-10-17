@@ -24,7 +24,7 @@ const TrendingItem = ({
 
   // bookmark click
   const getTitle = () => {
-    handleBookmarkClick(title);
+    handleBookmarkClick(category, title);
   };
 
   return (

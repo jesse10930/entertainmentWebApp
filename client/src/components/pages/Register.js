@@ -39,9 +39,9 @@ const Register = () => {
   const onRegisterSubmit = (e) => {
     e.preventDefault();
     if (email === '' || password === '' || password2 === '') {
-      console.log('emial or passord or password2 blank');
+      console.log('Email or passord or password2 blank');
     } else if (password !== password2) {
-      console.log('passwords do not match');
+      console.log('Passwords do not match');
     } else {
       register({ email, password });
     }
