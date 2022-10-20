@@ -55,8 +55,6 @@ const ContentState = (props) => {
     );
     let oldContent = newData[oldContentIndex];
 
-    console.log(oldContent);
-
     // Set new content object
     oldContent.isBookmarked = !oldContent.isBookmarked;
     let newContent = oldContent;
