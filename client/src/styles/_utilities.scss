@@ -286,3 +286,30 @@
 .play-title {
   margin-right: 10px;
 }
+
+.input-alert {
+  // width: 336px;
+  // height: 37px;
+  border-bottom: 1px solid $red;
+  // padding-left: 20px;
+  // padding-bottom: 20px;
+  // box-sizing: border-box;
+  // font-family: 'Outfit', sans-serif;
+  // font-size: 15px;
+  // font-weight: 300;
+  // line-height: 19px;
+  // background: $bg-black;
+  // color: $red;
+  // caret-color: $red;
+  // background-color: $v-dk-grey;
+  // cursor: pointer;
+
+  &:focus {
+    border-bottom: 1px solid red;
+  }
+
+  &::placeholder {
+    color: $red;
+    opacity: 1;
+  }
+}

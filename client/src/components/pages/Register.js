@@ -13,6 +13,7 @@ const Register = () => {
     password: '',
     password2: '',
   });
+  const [alert, setAlert] = useState(false);
   const { email, password, password2 } = user;
 
   // Declare navigation const
@@ -39,10 +40,13 @@ const Register = () => {
   const onRegisterSubmit = (e) => {
     e.preventDefault();
     if (email === '' || password === '' || password2 === '') {
-      console.log('Email or passord or password2 blank');
+      let newAlert = true;
+      setAlert(newAlert);
     } else if (password !== password2) {
       console.log('Passwords do not match');
     } else {
+      let newAlert = false;
+      setAlert(newAlert);
       register({ email, password });
     }
   };
@@ -67,23 +71,33 @@ const Register = () => {
         </h1>
         <input
           type='email'
-          className='login-register-input'
-          placeholder='Email address'
+          className={
+            alert ? 'login-register-input input-alert' : 'login-register-input'
+          }
+          placeholder={
+            alert ? 'Email address       Cant be empty' : 'Email address'
+          }
           name='email'
           onChange={onInputChange}
         />
         <input
           type='password'
-          className='login-register-input'
+          className={
+            alert ? 'login-register-input input-alert' : 'login-register-input'
+          }
           name='password'
-          placeholder='Password'
+          placeholder={alert ? 'Password           Cant be empty' : 'Password'}
           onChange={onInputChange}
         />
         <input
           type='password'
           name='password2'
-          className='login-register-input'
-          placeholder='Repeat password'
+          className={
+            alert ? 'login-register-input input-alert' : 'login-register-input'
+          }
+          placeholder={
+            alert ? 'Repeat Password           Cant be empty' : 'Password'
+          }
           onChange={onInputChange}
         />
         <input

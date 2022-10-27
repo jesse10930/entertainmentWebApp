@@ -12,6 +12,7 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const [alert, setAlert] = useState(false);
   const { email, password } = user;
 
   // Declare navigation const
@@ -41,9 +42,11 @@ const Login = () => {
   const onLoginSubmit = (e) => {
     e.preventDefault();
     if (email === '' || password === '') {
-      console.log('email or password is blank');
-      console.log(user);
+      let newAlert = true;
+      setAlert(newAlert);
     } else {
+      let newAlert = false;
+      setAlert(newAlert);
       login({ email, password });
     }
   };
@@ -64,17 +67,23 @@ const Login = () => {
         </h1>
         <input
           type='email'
-          className='login-register-input'
+          className={
+            alert ? 'login-register-input input-alert' : 'login-register-input'
+          }
           name='email'
-          placeholder='Email address'
+          placeholder={
+            alert ? 'Email address       Cant be empty' : 'Email address'
+          }
           id='login-email'
           onChange={onInputChange}
         />
         <input
           type='password'
-          className='login-register-input'
+          className={
+            alert ? 'login-register-input input-alert' : 'login-register-input'
+          }
           name='password'
-          placeholder='Password'
+          placeholder={alert ? 'Password           Cant be empty' : 'Password'}
           id='login-password'
           onChange={onInputChange}
         />
