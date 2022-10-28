@@ -12,7 +12,8 @@ const Login = () => {
     email: '',
     password: '',
   });
-  const [alert, setAlert] = useState(false);
+  const [emailAlert, setEmailAlert] = useState(false);
+  const [passAlert, setPassAlert] = useState(false);
   const { email, password } = user;
 
   // Declare navigation const
@@ -40,13 +41,35 @@ const Login = () => {
 
   // Called on login submit
   const onLoginSubmit = (e) => {
+    console.log(email.length);
     e.preventDefault();
-    if (email === '' || password === '') {
-      let newAlert = true;
-      setAlert(newAlert);
+    if (email.length === 0 && password === '') {
+      console.log('both empty');
+      console.log(email);
+      let newEmailAlert = true;
+      let newPassAlert = true;
+      setEmailAlert(newEmailAlert);
+      setPassAlert(newPassAlert);
+    } else if (email.length === 0 && !password === '') {
+      console.log('email empty');
+      let newEmailAlert = true;
+      let newPassAlert = false;
+      setEmailAlert(newEmailAlert);
+      setPassAlert(newPassAlert);
+    } else if (email.length !== 0 && password === '') {
+      console.log('pass empty');
+      let newPassAlert = true;
+      let newEmailAlert = false;
+      setPassAlert(newPassAlert);
+      setEmailAlert(newEmailAlert);
     } else {
-      let newAlert = false;
-      setAlert(newAlert);
+      console.log('neither empty');
+      console.log(emailAlert);
+      console.log(email.length);
+      let newPassAlert = false;
+      let newEmailAlert = false;
+      setEmailAlert(newEmailAlert);
+      setEmailAlert(newPassAlert);
       login({ email, password });
     }
   };
@@ -68,11 +91,13 @@ const Login = () => {
         <input
           type='email'
           className={
-            alert ? 'login-register-input input-alert' : 'login-register-input'
+            emailAlert
+              ? 'login-register-input input-alert'
+              : 'login-register-input'
           }
           name='email'
           placeholder={
-            alert ? 'Email address       Cant be empty' : 'Email address'
+            emailAlert ? 'Email address       Cant be empty' : 'Email address'
           }
           id='login-email'
           onChange={onInputChange}
@@ -80,10 +105,14 @@ const Login = () => {
         <input
           type='password'
           className={
-            alert ? 'login-register-input input-alert' : 'login-register-input'
+            passAlert
+              ? 'login-register-input input-alert'
+              : 'login-register-input'
           }
           name='password'
-          placeholder={alert ? 'Password           Cant be empty' : 'Password'}
+          placeholder={
+            passAlert ? 'Password           Cant be empty' : 'Password'
+          }
           id='login-password'
           onChange={onInputChange}
         />
