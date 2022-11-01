@@ -40,36 +40,38 @@ const Login = () => {
   };
 
   // Called on login submit
+  // const onLoginSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (email.length === 0 && !password.length === 0) {
+  //     setEmailAlert(true);
+  //     setPassAlert(false);
+  //   } else if (email.length === 0 && password.length === 0) {
+  //     setEmailAlert(true);
+  //     setPassAlert(true);
+  //   } else if (email.length !== 0 && password.length === 0) {
+  //     setEmailAlert(false);
+  //     setPassAlert(true);
+  //   } else {
+  //     setEmailAlert(false);
+  //     setPassAlert(false);
+  //     login({ email, password });
+  //   }
+  // };
+
+  // Called on login submit
   const onLoginSubmit = (e) => {
-    console.log(email.length);
     e.preventDefault();
-    if (email.length === 0 && password === '') {
-      console.log('both empty');
-      console.log(email);
-      let newEmailAlert = true;
-      let newPassAlert = true;
-      setEmailAlert(newEmailAlert);
-      setPassAlert(newPassAlert);
-    } else if (email.length === 0 && !password === '') {
-      console.log('email empty');
-      let newEmailAlert = true;
-      let newPassAlert = false;
-      setEmailAlert(newEmailAlert);
-      setPassAlert(newPassAlert);
-    } else if (email.length !== 0 && password === '') {
-      console.log('pass empty');
-      let newPassAlert = true;
-      let newEmailAlert = false;
-      setPassAlert(newPassAlert);
-      setEmailAlert(newEmailAlert);
-    } else {
-      console.log('neither empty');
-      console.log(emailAlert);
-      console.log(email.length);
-      let newPassAlert = false;
-      let newEmailAlert = false;
-      setEmailAlert(newEmailAlert);
-      setEmailAlert(newPassAlert);
+    if (email.length === 0) {
+      setEmailAlert(true);
+    }
+
+    if (password.length === 0) {
+      setPassAlert(true);
+    }
+
+    if (email.length !== 0 && password.length !== 0) {
+      setEmailAlert(false);
+      setPassAlert(false);
       login({ email, password });
     }
   };
@@ -97,7 +99,7 @@ const Login = () => {
           }
           name='email'
           placeholder={
-            emailAlert ? 'Email address       Cant be empty' : 'Email address'
+            emailAlert ? "Email address       Can't be empty" : 'Email address'
           }
           id='login-email'
           onChange={onInputChange}
@@ -111,7 +113,7 @@ const Login = () => {
           }
           name='password'
           placeholder={
-            passAlert ? 'Password           Cant be empty' : 'Password'
+            passAlert ? "Password           Can't be empty" : 'Password'
           }
           id='login-password'
           onChange={onInputChange}

@@ -14,6 +14,7 @@ const Register = () => {
     password2: '',
   });
   const [alert, setAlert] = useState(false);
+  const [passwordsAlert, setPasswordsAlert] = useState(false);
   const { email, password, password2 } = user;
 
   // Declare navigation const
@@ -33,20 +34,20 @@ const Register = () => {
   }, [error, isAuthenticated]);
 
   // Called when user changes input
-  const onInputChange = (e) =>
+  const onInputChange = (e) => {
+    setPasswordsAlert(false);
     setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   // On registration submit
   const onRegisterSubmit = (e) => {
     e.preventDefault();
     if (email === '' || password === '' || password2 === '') {
-      let newAlert = true;
-      setAlert(newAlert);
+      setAlert(true);
     } else if (password !== password2) {
-      console.log('Passwords do not match');
+      setPasswordsAlert(true);
     } else {
-      let newAlert = false;
-      setAlert(newAlert);
+      setAlert(false);
       register({ email, password });
     }
   };
@@ -75,7 +76,7 @@ const Register = () => {
             alert ? 'login-register-input input-alert' : 'login-register-input'
           }
           placeholder={
-            alert ? 'Email address       Cant be empty' : 'Email address'
+            alert ? "Email address       Can't be empty" : 'Email address'
           }
           name='email'
           onChange={onInputChange}
@@ -86,7 +87,7 @@ const Register = () => {
             alert ? 'login-register-input input-alert' : 'login-register-input'
           }
           name='password'
-          placeholder={alert ? 'Password           Cant be empty' : 'Password'}
+          placeholder={alert ? "Password           Can't be empty" : 'Password'}
           onChange={onInputChange}
         />
         <input
@@ -96,10 +97,19 @@ const Register = () => {
             alert ? 'login-register-input input-alert' : 'login-register-input'
           }
           placeholder={
-            alert ? 'Repeat Password           Cant be empty' : 'Password'
+            alert ? "Repeat Password           Can't be empty" : 'Password'
           }
           onChange={onInputChange}
         />
+        <p
+          className={
+            passwordsAlert
+              ? 'passwordAlert body-m'
+              : 'passwordAlert body-m hidden'
+          }
+        >
+          Passwords don't match
+        </p>
         <input
           type='submit'
           className='btn log-reg-btn'

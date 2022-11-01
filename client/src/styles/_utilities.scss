@@ -305,11 +305,22 @@
   // cursor: pointer;
 
   &:focus {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid $red;
   }
 
   &::placeholder {
     color: $red;
     opacity: 1;
   }
+}
+
+.passwordAlert {
+  position: absolute;
+  right: 35px;
+  bottom: 135px;
+  color: $red;
+}
+
+.hidden {
+  display: none;
 }
