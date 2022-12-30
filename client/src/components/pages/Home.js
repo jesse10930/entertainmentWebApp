@@ -18,9 +18,7 @@ export const Home = () => {
   useEffect(() => {
     loadUser();
     getData();
-
-    console.log(data);
-    console.log(user);
+    
     // eslint-disable-next-line
   }, []);
 

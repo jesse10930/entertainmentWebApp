@@ -100,8 +100,8 @@ router.put('/', auth, async (req, res) => {
   let newUserSeries = req.body.series;
 
   try {
-    let user = await User.findOneAndUpdate(
-      newUser.id,
+    let user = await User.findByIdAndUpdate(
+      newUser._id,
       { movies: newUserMovies, series: newUserSeries },
       { new: true }
     );
