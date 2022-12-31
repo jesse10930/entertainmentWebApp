@@ -20,7 +20,8 @@ const ContentState = (props) => {
 
     dispatch({
       type: GET_DATA,
-      payload: newData,
+      payload1: newData,
+      payload2: 'trending',
     });
   };
 

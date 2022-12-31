@@ -129,14 +129,7 @@ const AuthState = (props) => {
     }
 
     try {
-      // NEW USER GET PASSED IN WITH THE CORRECT INFO BUT RES.DATA HAS THE OLD USER'S INFO
-      
-      console.log(newUser);
-
       const res = await axios.put('/api/auth', newUser, config);
-
-      console.log(res.data);
-
       dispatch({
         type: UPDATE_BOOKMARKS,
         payload: res.data,

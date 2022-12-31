@@ -10,7 +10,8 @@ const contentReducer = (state, action) => {
     case GET_DATA:
       return {
         ...state,
-        data: action.payload,
+        data: action.payload1,
+        active: action.payload2,
       };
     case SET_BOOKMARK:
       return {
