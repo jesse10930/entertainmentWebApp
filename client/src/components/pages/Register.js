@@ -15,6 +15,8 @@ const Register = () => {
   });
   const [alert, setAlert] = useState(false);
   const [passwordsAlert, setPasswordsAlert] = useState(false);
+  const [passLengthAlert, setPassLengthAlert] = useState(false);
+  const [emailAlert, setEmailAlert] = useState(false);
   const { email, password, password2 } = user;
 
   // Declare navigation const
@@ -27,7 +29,7 @@ const Register = () => {
     }
 
     if (error === 'Email already exists') {
-      console.log(error);
+      setEmailAlert(true);
       clearErrors();
     }
     // eslint-disable-next-line
@@ -36,6 +38,7 @@ const Register = () => {
   // Called when user changes input
   const onInputChange = (e) => {
     setPasswordsAlert(false);
+    setPassLengthAlert(false);
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
@@ -44,6 +47,8 @@ const Register = () => {
     e.preventDefault();
     if (email === '' || password === '' || password2 === '') {
       setAlert(true);
+    } else if (password.length < 6) {
+      setPassLengthAlert(true);
     } else if (password !== password2) {
       setPasswordsAlert(true);
     } else {
@@ -109,6 +114,24 @@ const Register = () => {
           }
         >
           Passwords don't match
+        </p>
+        <p
+          className={
+            passLengthAlert
+              ? 'passwordAlert body-m'
+              : 'passwordAlert body-m hidden'
+          }
+        >
+          Password must be at least 6 characters
+        </p>
+        <p
+          className={
+            emailAlert
+              ? 'passwordAlert body-m'
+              : 'passwordAlert body-m hidden'
+          }
+        >
+          Email already exists
         </p>
         <input
           type='submit'

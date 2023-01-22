@@ -14,6 +14,8 @@ const Login = () => {
   });
   const [emailAlert, setEmailAlert] = useState(false);
   const [passAlert, setPassAlert] = useState(false);
+  const [existsAlert, setExistsAlert] = useState(false);
+  const [incorrectAlert, setIncorrectAlert] = useState(false);
   const { email, password } = user;
 
   // Declare navigation const
@@ -25,38 +27,21 @@ const Login = () => {
       navigate('/', { replace: true });
     }
 
-    if (
-      error === 'Email not found' ||
-      error === 'Password incorrect for entered email'
-    ) {
-      console.log(error);
+    if (error === 'Email not found') {
+      setExistsAlert(true);
+      clearErrors();
+    } else if (error === 'Password incorrect for entered email') {
+      setIncorrectAlert(true);
       clearErrors();
     }
   }, [error, isAuthenticated]);
 
   // Called when user changes input
   const onInputChange = (e) => {
+    setExistsAlert(false);
+    setIncorrectAlert(false);
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-
-  // Called on login submit
-  // const onLoginSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (email.length === 0 && !password.length === 0) {
-  //     setEmailAlert(true);
-  //     setPassAlert(false);
-  //   } else if (email.length === 0 && password.length === 0) {
-  //     setEmailAlert(true);
-  //     setPassAlert(true);
-  //   } else if (email.length !== 0 && password.length === 0) {
-  //     setEmailAlert(false);
-  //     setPassAlert(true);
-  //   } else {
-  //     setEmailAlert(false);
-  //     setPassAlert(false);
-  //     login({ email, password });
-  //   }
-  // };
 
   // Called on login submit
   const onLoginSubmit = (e) => {
@@ -118,6 +103,24 @@ const Login = () => {
           id='login-password'
           onChange={onInputChange}
         />
+        <p
+          className={
+            existsAlert
+              ? 'loginAlert body-m'
+              : 'loginAlert body-m hidden'
+          }
+        >
+          Email not found
+        </p>
+        <p
+          className={
+            incorrectAlert
+              ? 'loginAlert body-m'
+              : 'loginAlert body-m hidden'
+          }
+        >
+          Incorrect password for entered email
+        </p>
         <input
           type='submit'
           className='btn log-reg-btn'
