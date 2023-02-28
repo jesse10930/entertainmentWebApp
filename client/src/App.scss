@@ -47,6 +47,11 @@ a {
   }
 }
 
+// Hidden Div
+#hidden-div {
+  display: none;
+}
+
 // Navbar
 #navbar-container {
   height: calc(100vh - 64px);
@@ -168,3 +173,5 @@ a {
     width: 100%;
   }
 }
+
+@import 'styles/mobile';

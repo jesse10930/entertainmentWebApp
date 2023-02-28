@@ -1,0 +1,97 @@
+// Tablets
+@media (max-width: 900px) {
+  .log-reg-container {
+    height: 65vh;
+  }
+
+  #hidden-div {
+    display:block;
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+    top: 0px;
+    z-index: 9;
+    background-color: $bg-black;
+  }
+
+  #navbar-container {
+    height: 72px;
+    width: calc(100vw - 64px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+
+    #navbar-icon {
+      position: relative;
+      margin-left: 20px;
+      top: 0px;
+      left: 0px;
+    }
+
+    #navbar-links {
+      position: relative;
+      height: 72px;
+      width: 200px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      top: 0px;
+      left: 0px;
+    }
+
+    #logout-btn {
+      position: relative;
+      left: 0px;
+      bottom: 0px;
+    }
+
+    #prof-pic {
+      position: relative;
+      margin-right: 20px;
+      bottom: 0px;
+      left: 0px;
+    }
+  }
+
+  #searchbar-container {
+    position: absolute;
+    top: 120px;
+    left: 32px;
+    width: calc(100vw - 64px);
+  }
+
+  #content-container {
+    width: calc(100vw - 64px);
+    margin-top: 200px;
+    margin-left: 32px;
+
+    #recommended-container {
+      width: 100%;
+    }
+  }
+}
+
+// Phones
+@media (max-width: 500px) {
+  #navbar-container {
+    #navbar-icon {
+      display: none;
+    }
+
+    #navbar-links {
+      justify-content: space-around;
+      left: -15px;
+    }
+
+    #logout-btn {
+      left: -6px;
+    }
+
+    #prof-pic {
+      margin-right: 0px;
+    }
+  }
+}

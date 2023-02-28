@@ -35,6 +35,7 @@ export const Home = () => {
 
   return (
     <div id='home-container'>
+      <div id='hidden-div'></div>
       <Navbar />
       <Searchbar />
       <div id='content-container'>
